@@ -5,7 +5,11 @@
     <title>Codemirror: Messageformat</title>
     <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
     <script src="bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="bower_components/codemirror/addon/fold/foldcode.js"></script>
+    <script src="bower_components/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="bower_components/codemirror/addon/fold/brace-fold.js"></script>
     <script src="messageformat-mode.js"></script>
+    <link rel="stylesheet" href="bower_components/codemirror/addon/fold/foldgutter.css">
     <style type="text/css" media="screen">
       html, body {
         margin: 0;
@@ -48,7 +52,10 @@
       var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
         mode: "messageformat.js",
         lineNumbers: true,
-        styleActiveLine: true
+        styleActiveLine: true,
+        foldOptions: {minFoldSize: 1},
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
       });
       editor.focus();
     </script>

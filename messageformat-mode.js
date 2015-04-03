@@ -187,7 +187,8 @@ CodeMirror.defineMode("messageformat.js", function(config, parserConfig) {
       } else if(currentState === "illegalBlock") {
         return illegalBlockToken(stream, state);
       }
-    }
+    },
+    fold: "brace"
   };
 
 });
