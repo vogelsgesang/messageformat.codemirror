@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf8">
+  <head>
+    <title>Codemirror: Messageformat</title>
+    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+    <script src="bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="messageformat-mode.js"></script>
+    <style type="text/css" media="screen">
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .CodeMirror {
+        line-height: 1.4;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+
+    <textarea id="editor">\{ \# \u1234 \u12x \u123 \# Test }
+{VAR}
+{VAR, select,
+  a {a}
+  b {a}
+  c {a}
+  =0 {a}
+  = {a}
+} Test
+{NUM, plural,
+  one {a}
+  two {b}
+  =10 {10}
+  other {x}
+}
+{NUM, selectordinal,
+  other {x}
+  =10 {10}
+}
+{NOW, date}
+{NOW, date, full}
+</textarea>
+
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+        mode: "messageformat.js",
+        lineNumbers: true,
+        styleActiveLine: true
+      });
+      editor.focus();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "messageformat.codemirror",
+  "version": "0.0.0",
+  "authors": [
+    "Adrian Vogelsgesang <adrian.vogelsgesang@tum.de>"
+  ],
+  "description": "A codemirror mode for highlighting messageformat strings as accepted by messageformat.js (https://github.com/SlexAxton/messageformat.js)",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "codemirror",
+    "editor",
+    "messageformat",
+    "icu",
+    "i18n"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "codemirror": "~5.1.0"
+  }
+}
