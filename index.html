@@ -18,6 +18,7 @@
         height: 100%;
       }
       .CodeMirror {
+        font-size: 1.2em;
         line-height: 1.4;
         height: 100%;
       }
@@ -25,28 +26,39 @@
   </head>
   <body>
 
-    <textarea id="editor">\{ \# \u1234 \u12x \u123 \# Test }
-{VAR}
-{VAR, select,
+    <textarea id="editor">The syntax highlighter is able to handle plain strings,
+escaped characters \{ \# \u1234,
+wrongly escaped characters \u12z1 \u123 \ } and it recovers from errors.
+
+An interpolated {VAR} variable
+A missing {} variable name
+A trailing comma {VAR,} after the variable name
+SelectFormat: {VAR, select,
   a {a}
-  b {a}
-  c {a}
-  =0 {a}
-  = {a}
-} Test
-{NUM, plural,
+  =0 {equal sign in keys is not allowed for selects}
+  {missing key}
+  x {and the syntax highlighter recovers}
+}
+PluralFormat: {NUM, plural,
   one {a}
   two {b}
   =10 {10}
+  some {another string}
   other {x}
 }
-{NUM, selectordinal,
+selectordinal {NUM, selectordinal,
   other {x}
   =10 {10}
 }
-{NOW, date}
-{NOW, date, full}
-</textarea>
+user defined functions: {NOW, date} and {NOW, date, full}
+nesting: {PERSON_CNT, select,
+  unknown {an unknown number of persons}
+  other {{PERSON_CNT, plural,
+    =0 {no one}
+    one {1 person}
+    other {# persons}
+  }}
+}</textarea>
 
     <script>
       var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
