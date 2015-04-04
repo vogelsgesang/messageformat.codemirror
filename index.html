@@ -21,16 +21,24 @@
         width: 100%;
         height: 100%;
       }
+      .container {
+        max-width: 50em;
+        margin: auto;
+      }
       .CodeMirror {
+        height: auto;
         font-size: 1.2em;
         line-height: 1.4;
-        height: 100%;
+        border: 1px solid #ddd;
+        border-radius: 10px;
       }
     </style>
   </head>
   <body>
+    <div class="container">
+      <h1>Messageformat editor</h1>
 
-    <textarea id="editor">The syntax highlighter is able to handle plain strings,
+      <textarea id="editor">The syntax highlighter is able to handle plain strings,
 escaped characters \{ \# \u1234,
 wrongly escaped characters \u12z1 \u123 \ } and it recovers from errors.
 
@@ -71,6 +79,7 @@ nesting: {PERSON_CNT, select,
     other {# persons}
   }}
 }</textarea>
+    </div>
 
     <script>
       var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
