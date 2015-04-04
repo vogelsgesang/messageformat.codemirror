@@ -8,8 +8,12 @@
     <script src="node_modules/codemirror/addon/fold/foldcode.js"></script>
     <script src="node_modules/codemirror/addon/fold/foldgutter.js"></script>
     <script src="node_modules/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="node_modules/codemirror/addon/lint/lint.js"></script>
     <script src="messageformat-mode.js"></script>
+    <script src="forgiving-messageformat-parser.js"></script>
+    <script src="messageformat-lint.js"></script>
     <link rel="stylesheet" href="node_modules/codemirror/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/lint/lint.css">
     <style type="text/css" media="screen">
       html, body {
         margin: 0;
@@ -51,11 +55,19 @@ selectordinal {NUM, selectordinal,
   =10 {10}
 }
 user defined functions: {NOW, date} and {NOW, date, full}
+The linter marks PluralFormats and SelectFormats without "other" key:
+{VAR, select,
+  male {He}
+  female {She}
+} and it marks duplicate keys.
 nesting: {PERSON_CNT, select,
   unknown {an unknown number of persons}
   other {{PERSON_CNT, plural,
     =0 {no one}
-    one {1 person}
+    =0 {noone}
+    =2 {two persons}
+    one {one person}
+    =2 {2 persons}
     other {# persons}
   }}
 }</textarea>
@@ -67,7 +79,8 @@ nesting: {PERSON_CNT, select,
         styleActiveLine: true,
         foldOptions: {minFoldSize: 1},
         foldGutter: true,
-        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+        lint: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-lint-markers", "CodeMirror-foldgutter"]
       });
       editor.focus();
     </script>
