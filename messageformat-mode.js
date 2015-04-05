@@ -13,6 +13,9 @@ CodeMirror.defineMode("messageformat.js", function(config, parserConfig) {
   var identifierRegexp = /^[0-9a-zA-Z$_][^ \t\n\r,.+={}]*/;
 
   function literalModeToken(stream, state) {
+    if(stream.eat('#')) {
+      return state.stack.length ? "keyword" : "string";
+    }
     if(stream.match(/^\\[{}#\\]/)) {
       return "atom";
     }
