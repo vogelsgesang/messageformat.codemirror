@@ -1,6 +1,6 @@
 {
   "name": "messageformat.codemirror",
-  "version": "0.0.1-dev",
+  "version": "0.0.1",
   "description": "A codemirror mode for highlighting messageformat strings as accepted by messageformat.js (https://github.com/SlexAxton/messageformat.js)",
   "main": " ",
   "scripts": {
