@@ -14,5 +14,6 @@ While there are a lot of different MessageFormat dialects, I will stick to the s
   * highlights invalid MessageFormat blocks
   * finds MessageFormat blocks with missing "other" form
   * finds duplicated keys in MessageFormat blocks
+* highlights consecutive space characters and trailing space
 
 Both the syntax highlighter and the linter are able to deal with syntactically invalid MessageFormat strings.

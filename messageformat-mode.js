@@ -35,9 +35,18 @@ CodeMirror.defineMode("messageformat.js", function(config, parserConfig) {
         return "error";
       }
     }
-    if(stream.eatWhile(/[^\\{}#]+/)) {
-      return "string";
+    if(stream.match(/^[ \t]{2,}|[ \t]$/) || stream.eat("\t")) {
+      return "suspicious-space";
     }
+    var inString = true;
+    while(inString) {
+      var spaceEaten = stream.eat(" ");
+      inString = stream.eatWhile(/[^ \t\\{}#]+/);
+      if(!inString && spaceEaten) {
+        stream.backUp(1);
+      }
+    }
+    if(stream.current() !== "") return "string";
     stream.next();
     return "error";
   }
