@@ -69,7 +69,6 @@ CodeMirror.registerHelper("lint", "messageformat.js", function(text, options, ed
   var lineCnt = editor.lineCount();
 
   var ast = forgivingMessageformatParser.parse(text);
-  console.log(ast);
   return extractHintsFromAst(ast);
 });
 
